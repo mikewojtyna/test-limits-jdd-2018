@@ -1,12 +1,11 @@
-package pro.buildmysoftware.testlimits;
+package pro.buildmysoftware.testlimits.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestLimitsApplication {
-
+public class OrderApp {
 	public static void main(String[] args) {
-		SpringApplication.run(TestLimitsApplication.class, args);
+		SpringApplication.run(OrderApp.class, args);
 	}
 }
