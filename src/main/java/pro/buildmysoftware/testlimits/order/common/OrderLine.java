@@ -15,6 +15,11 @@ public class OrderLine {
 	}
 
 	@Override
+	public String toString() {
+		return "OrderLine{" + "price=" + price + '}';
+	}
+
+	@Override
 	public boolean equals(final Object o) {
 		if (this == o) {
 			return true;

@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result
 import static org.springframework.test.web.servlet.result
 	.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(controllers = BadOrderController.class)
 @SpringJUnitConfig(OrderApp.class)
 public class BadOrderControllerIntegrationTest {
 	@Autowired

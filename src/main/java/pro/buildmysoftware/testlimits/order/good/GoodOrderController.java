@@ -1,6 +1,7 @@
 package pro.buildmysoftware.testlimits.order.good;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.buildmysoftware.testlimits.order.common.PlaceOrderCommand;
@@ -8,10 +9,14 @@ import pro.buildmysoftware.testlimits.order.common.PlaceOrderCommand;
 @RestController
 @RequestMapping("/good/orders")
 class GoodOrderController {
-	private OrderFacade facade;
+	private final OrderFacade facade;
+
+	public GoodOrderController(final OrderFacade facade) {
+		this.facade = facade;
+	}
 
 	@PostMapping
-	void placeOrder(final PlaceOrderCommand command) {
+	public void placeOrder(@RequestBody final PlaceOrderCommand command) {
 		facade.placeOrder(command);
 	}
 }
