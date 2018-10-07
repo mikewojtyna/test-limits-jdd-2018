@@ -51,7 +51,6 @@ public class GoodOrderControllerIntegrationTest {
 		// then
 		.andExpect(status().isOk());
 		// @formatter:on
-
 		verify(orderFacade, times(1)).placeOrder(expectedCommand);
 	}
 }
