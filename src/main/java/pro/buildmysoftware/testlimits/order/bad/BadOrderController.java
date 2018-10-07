@@ -29,7 +29,7 @@ public class BadOrderController {
 	public void placeOrder(@RequestBody final BadOrder order) {
 		final Money totalCost = order.getLines().stream().map
 			(OrderLine::getPrice).reduce(Money.zero(CurrencyUnit
-			.USD), (acc, curr) -> acc.plus(curr));
+			.USD), Money::plus);
 		order.setTotalCost(totalCost);
 		order.setPlaced(true);
 		orderRepository.save(order);
