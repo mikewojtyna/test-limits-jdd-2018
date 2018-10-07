@@ -9,7 +9,11 @@ import java.time.LocalDate;
 import java.time.Month;
 
 public class BadOrderService {
-	BadOrderRepository repository;
+	private final BadOrderRepository repository;
+
+	public BadOrderService(final BadOrderRepository repository) {
+		this.repository = repository;
+	}
 
 	public void placeOrder(final BadOrder order) {
 		applyDiscount(order);
