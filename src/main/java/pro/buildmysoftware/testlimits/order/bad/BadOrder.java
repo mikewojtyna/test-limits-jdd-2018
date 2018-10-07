@@ -3,12 +3,23 @@ package pro.buildmysoftware.testlimits.order.bad;
 import org.joda.money.Money;
 import pro.buildmysoftware.testlimits.order.common.OrderLine;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class BadOrder {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Transient
 	private boolean isPlaced;
+	@Transient
 	private List<OrderLine> lines;
+	@Transient
 	private Money totalCost;
 
 	@Override
