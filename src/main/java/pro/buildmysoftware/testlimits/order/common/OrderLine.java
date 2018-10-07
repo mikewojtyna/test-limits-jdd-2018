@@ -1,4 +1,4 @@
-package pro.buildmysoftware.testlimits.order.bad;
+package pro.buildmysoftware.testlimits.order.common;
 
 import org.joda.money.Money;
 
@@ -10,19 +10,19 @@ public class OrderLine {
 	public OrderLine() {
 	}
 
-	public OrderLine(Money price) {
+	public OrderLine(final Money price) {
 		this.price = price;
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 		if (this == o) {
 			return true;
 		}
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		OrderLine orderLine = (OrderLine) o;
+		final OrderLine orderLine = (OrderLine) o;
 		return Objects.equals(price, orderLine.price);
 	}
 
@@ -36,7 +36,7 @@ public class OrderLine {
 		return price;
 	}
 
-	public void setPrice(Money price) {
+	public void setPrice(final Money price) {
 		this.price = price;
 	}
 }

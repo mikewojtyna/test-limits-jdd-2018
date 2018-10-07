@@ -12,8 +12,9 @@ import java.io.IOException;
 @JsonComponent
 public class MoneyDeserializer extends JsonDeserializer<Money> {
 	@Override
-	public Money deserialize(JsonParser p, DeserializationContext ctxt)
-		throws IOException, JsonProcessingException {
+	public Money deserialize(final JsonParser p, final
+	DeserializationContext ctxt) throws IOException,
+		JsonProcessingException {
 		return Money.parse(p.readValueAs(String.class));
 	}
 }

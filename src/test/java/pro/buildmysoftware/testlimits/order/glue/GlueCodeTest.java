@@ -2,9 +2,10 @@ package pro.buildmysoftware.testlimits.order.glue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pro.buildmysoftware.testlimits.order.bad.*;
-import pro.buildmysoftware.testlimits.order.common.OrderRepository;
-import pro.buildmysoftware.testlimits.order.common.OrderStatisticsService;
+import pro.buildmysoftware.testlimits.order.bad.BadOrder;
+import pro.buildmysoftware.testlimits.order.bad.BadOrderRepository;
+import pro.buildmysoftware.testlimits.order.bad.BadOrderStatisticsService;
+import pro.buildmysoftware.testlimits.order.common.PlaceOrderCommand;
 
 import static org.mockito.Mockito.*;
 
@@ -14,19 +15,20 @@ class GlueCodeTest {
 	@Test
 	void test() throws Exception {
 		// given
-		PlaceOrderCommand command = placeCommand();
+		final PlaceOrderCommand command = placeCommand();
 		// configure the place order service
-		PlaceOrderService placeOrderService = mock(PlaceOrderService
-			.class);
-		Order order = new Order();
+		final PlaceOrderService placeOrderService = mock
+			(PlaceOrderService.class);
+		final BadOrder order = new BadOrder();
 		when(placeOrderService.placeOrder(command)).thenReturn(order);
 		// configure the repository
-		OrderRepository repository = mock(OrderRepository.class);
-		Order savedOrder = new Order();
+		final BadOrderRepository repository = mock(BadOrderRepository
+			.class);
+		final BadOrder savedOrder = new BadOrder();
 		when(repository.save(order)).thenReturn(savedOrder);
-		OrderStatisticsService statsService = mock
-			(OrderStatisticsService.class);
-		GlueOrderService service = new GlueOrderService
+		final BadOrderStatisticsService statsService = mock
+			(BadOrderStatisticsService.class);
+		final GlueOrderService service = new GlueOrderService
 			(placeOrderService, repository, statsService);
 
 		// when

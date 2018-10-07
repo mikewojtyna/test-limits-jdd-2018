@@ -11,8 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import pro.buildmysoftware.testlimits.order.OrderApp;
-import pro.buildmysoftware.testlimits.order.common.OrderRepository;
-import pro.buildmysoftware.testlimits.order.common.OrderStatisticsService;
+import pro.buildmysoftware.testlimits.order.common.OrderLine;
 
 import java.util.Arrays;
 
@@ -28,22 +27,22 @@ import static org.springframework.test.web.servlet.result
 
 @WebMvcTest
 @SpringJUnitConfig(OrderApp.class)
-public class OrderControllerIntegrationTest {
+public class BadOrderControllerIntegrationTest {
 	@Autowired
 	private MockMvc mockMvc;
 	@MockBean
-	private OrderRepository orderRepository;
+	private BadOrderRepository orderRepository;
 	@MockBean
-	OrderStatisticsService statisticsService;
+	BadOrderStatisticsService statisticsService;
 
 	@DisplayName("should calculate total cost and set paid status")
 	@Test
 	void test0() throws Exception {
 		// given
-		String orderJson = "{ \"isPlaced\": true, \"lines\": [ " +
-			"{\"price\": " + "\"USD 10.00\"}, " + "{\"price\": " +
-			"\"USD 20.00\"} ] }";
-		Order expectedOrder = new Order();
+		final String orderJson = "{ \"isPlaced\": true, \"lines\": [ "
+			+ "{\"price\": " + "\"USD 10.00\"}, " + "{\"price\": "
+			+ "\"USD 20.00\"} ] }";
+		final BadOrder expectedOrder = new BadOrder();
 		expectedOrder.setLines(Arrays.asList(new OrderLine(Money.of
 			(CurrencyUnit.USD, 10.00)), new OrderLine(Money.of
 			(CurrencyUnit.USD, 20.00))));

@@ -1,25 +1,27 @@
 package pro.buildmysoftware.testlimits.order.glue;
 
-import pro.buildmysoftware.testlimits.order.bad.*;
-import pro.buildmysoftware.testlimits.order.common.OrderRepository;
-import pro.buildmysoftware.testlimits.order.common.OrderStatisticsService;
+import pro.buildmysoftware.testlimits.order.bad.BadOrder;
+import pro.buildmysoftware.testlimits.order.bad.BadOrderRepository;
+import pro.buildmysoftware.testlimits.order.bad.BadOrderStatisticsService;
+import pro.buildmysoftware.testlimits.order.common.PlaceOrderCommand;
 
 public class GlueOrderService {
-	private PlaceOrderService service;
-	private OrderRepository repository;
-	private OrderStatisticsService statisticsService;
+	private final PlaceOrderService service;
+	private final BadOrderRepository repository;
+	private final BadOrderStatisticsService statisticsService;
 
-	public GlueOrderService(PlaceOrderService service, OrderRepository
-		repository, OrderStatisticsService statisticsService) {
+	public GlueOrderService(final PlaceOrderService service, final
+	BadOrderRepository repository, final BadOrderStatisticsService
+		statisticsService) {
 		this.service = service;
 		this.repository = repository;
 		this.statisticsService = statisticsService;
 	}
 
-	void placeOrder(PlaceOrderCommand command) {
+	void placeOrder(final PlaceOrderCommand command) {
 		// is there any logic here?
-		Order order = service.placeOrder(command);
-		Order savedOrder = repository.save(order);
+		final BadOrder order = service.placeOrder(command);
+		final BadOrder savedOrder = repository.save(order);
 		statisticsService.updateStatistics(savedOrder);
 	}
 }

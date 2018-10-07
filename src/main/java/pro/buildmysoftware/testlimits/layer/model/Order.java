@@ -2,7 +2,7 @@ package pro.buildmysoftware.testlimits.layer.model;
 
 import org.joda.money.Money;
 import pro.buildmysoftware.testlimits.layer.repository.OrderDateUpdater;
-import pro.buildmysoftware.testlimits.order.bad.OrderLine;
+import pro.buildmysoftware.testlimits.order.common.OrderLine;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -21,7 +21,7 @@ public class Order {
 		return date;
 	}
 
-	public void setDate(LocalDateTime placeDate) {
+	public void setDate(final LocalDateTime placeDate) {
 		this.date = placeDate;
 	}
 
@@ -29,7 +29,7 @@ public class Order {
 		return lines;
 	}
 
-	public void setLines(List<OrderLine> lines) {
+	public void setLines(final List<OrderLine> lines) {
 		this.lines = lines;
 	}
 
@@ -37,7 +37,7 @@ public class Order {
 		return totalCost;
 	}
 
-	public void setTotalCost(Money totalCost) {
+	public void setTotalCost(final Money totalCost) {
 		this.totalCost = totalCost;
 	}
 
@@ -45,7 +45,7 @@ public class Order {
 		return isPlaced;
 	}
 
-	public void setPlaced(boolean placed) {
+	public void setPlaced(final boolean placed) {
 		isPlaced = placed;
 	}
 }

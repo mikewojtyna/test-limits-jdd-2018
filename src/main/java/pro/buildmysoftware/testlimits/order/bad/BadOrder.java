@@ -1,11 +1,12 @@
 package pro.buildmysoftware.testlimits.order.bad;
 
 import org.joda.money.Money;
+import pro.buildmysoftware.testlimits.order.common.OrderLine;
 
 import java.util.List;
 import java.util.Objects;
 
-public class Order {
+public class BadOrder {
 	private boolean isPlaced;
 	private List<OrderLine> lines;
 	private Money totalCost;
@@ -17,14 +18,14 @@ public class Order {
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 		if (this == o) {
 			return true;
 		}
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		Order order = (Order) o;
+		final BadOrder order = (BadOrder) o;
 		return isPlaced == order.isPlaced && Objects.equals(lines,
 			order.lines) && Objects.equals(totalCost, order
 			.totalCost);
@@ -40,7 +41,7 @@ public class Order {
 		return lines;
 	}
 
-	public void setLines(List<OrderLine> lines) {
+	public void setLines(final List<OrderLine> lines) {
 		this.lines = lines;
 	}
 
@@ -48,7 +49,7 @@ public class Order {
 		return totalCost;
 	}
 
-	public void setTotalCost(Money totalCost) {
+	public void setTotalCost(final Money totalCost) {
 		this.totalCost = totalCost;
 	}
 
@@ -56,7 +57,7 @@ public class Order {
 		return isPlaced;
 	}
 
-	public void setPlaced(boolean placed) {
+	public void setPlaced(final boolean placed) {
 		isPlaced = placed;
 	}
 }
